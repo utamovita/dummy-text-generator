@@ -4,18 +4,13 @@ import Form from './components/form/form';
 import { Container } from '@material-ui/core';
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			outputText: 'Press button above to generate dummy text!',
-			spinner: false,
-			hideCopyBtn: true
-		}
-		this.showText = this.showText.bind(this);
-		this.enableSpinner = this.enableSpinner.bind(this);
+	state = {
+		outputText: 'Press button above to generate dummy text!',
+		spinner: false,
+		hideCopyBtn: true
 	}
 
-	showText(data) {
+	showText = (data) => {
 		this.setState({
 			outputText: data,
 			spinner: false,
@@ -23,7 +18,7 @@ class App extends Component {
 		});
 	}
 
-	enableSpinner() {
+	enableSpinner = () => {
 		this.setState({ spinner: true })
 	}
 
