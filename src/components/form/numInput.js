@@ -11,13 +11,16 @@ const inputStyles = {
     paddingLeft: '15px',
     textAlign: 'center',
 }
+
 class Text extends Component {
     constructor(props) {
         super(props);
-        this.onChange = this.onChange.bind(this);
+        this.state = ({
+            value: ''
+        })
     }
 
-    onChange(e) {
+    onChange = (e) => {
         this.setState({
             value: e.target.value
         }, () => this.props.changeParas(this.state.value))

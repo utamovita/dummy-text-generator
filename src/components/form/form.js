@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SelectFormat from './SelectFormat';
-import ParasInput from './ParasInput';
+import NumInput from './numInput';
 import { Button, Box } from '@material-ui/core';
 import axios from 'axios';
 
@@ -26,11 +26,8 @@ class Form extends Component {
             format: 'text',
             text: ''
         }
-        this.changeParas = this.changeParas.bind(this);
-        this.changeFormat = this.changeFormat.bind(this);
-        this.getSampleText = this.getSampleText.bind(this);
     }
-    getSampleText(e) {
+    getSampleText = (e) => {
         e.preventDefault();
         this.props.spinner();
         axios.get('https://baconipsum.com/api/?type=all-meat&paras=' + this.state.paras + '&start-with-lorem=1&format=' + this.state.format)
@@ -44,13 +41,13 @@ class Form extends Component {
             });
     }
 
-    changeFormat(format) {
+    changeFormat = (format) => {
         this.setState({
             format: format
         });
     }
 
-    changeParas(number) {
+    changeParas = (number) => {
         this.setState({
             paras: number
         });
@@ -61,7 +58,7 @@ class Form extends Component {
             <Box style={boxStyle}>
                 <h1 style={h1Style}>Dummy text generator</h1>
                 <form style={formStyle}>
-                    <ParasInput val={this.state.paras} changeParas={this.changeParas} />
+                    <NumInput val={this.state.paras} changeParas={this.changeParas} />
                     <SelectFormat value={this.state.format} changeFormat={this.changeFormat} />
                     <Button variant="contained" color="secondary" onClick={this.getSampleText}>generate</Button>
                 </form>
